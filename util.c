@@ -34,7 +34,7 @@ int luaopen_util(lua_State* L){
 	};
 	lua_newtable(L); 
 	luaL_setfuncs(L,mylib,0);
-	luaL_loadlib()
+//	luaL_loadlib();
 	
 	
 	lua_State* LL = luaL_newstate();
@@ -44,6 +44,8 @@ int luaopen_util(lua_State* L){
 	lua_pushinteger(LL,12);
 	lua_pushinteger(LL,15);
 	lua_pcall(LL,2,1,0);
+	printf("result is %lld \n",lua_tointeger(LL,-1));
+	printf("result is %lld \n",lua_tointeger(LL,-1));
 	printf("result is %lld \n",lua_tointeger(LL,-1));
 	
 	return 1; 
