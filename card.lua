@@ -210,26 +210,33 @@ end
 function remove_straight(t)
 	assert(#t%3 == 0 and #t > 0)
 	local ret = {}
+--	showTable(t)
 	for i=1,#t - 2 do
 		local found1
 		local found2
 		local position = {}
 		table.insert(position,i)
-		for k = i,#t do
+		for k = i + 1,#t do
+--			print("k = "..t[k].." i = "..(t[i] + 1))
 			if not found1 and t[i] + 1 == t[k] then
 				found1  = true 
 				table.insert(position,k)
+--				print("------------------------1")
 			end 
 
 			if not found2 and t[i] + 2 == t[k] then
 				found2  = true 
 				table.insert(position,k)
+--				print("k = "..k)
+--				print("------------------------2")
+
 			end 
 
 			if found2 and found1 then
 				break
 			end
 		end
+	
 		if found2 and found1 then
 			for i = #position,1,-1 do
 				table.insert(ret,table.remove(t,position[i]))
@@ -276,12 +283,14 @@ function check_hu(set)
 		if set[i] == set[i + 1] then
 			local check = {}
 			for k = 1,#set do
+--				print("k == "..k)
 				if k ~= i and k ~= i + 1 then
 --					print("sort "..set[k])
 					table.insert(check,set[k])
+--					print(" k = "..k.." i = "..i.." i + 1 = "..(i + 1))
 				end
 			end
-			showTable(check)
+--			showTable(check)
 			
 
 			if #check == 0 or check_3n(check) then
@@ -289,13 +298,14 @@ function check_hu(set)
 			end
 		end
 	end
+	return false
 end
 
 
 local sets = {
-	{0x11,0x11,0x11,0x11,0x12,0x12,0x12,0x12,0x13,0x13,0x13,0x13,0x14,0x14,0x14,0x14,0x15}, 
-	{0x11,0x12,0x13,0x15,0x15},
-	{0x12,0x13,0x14,0x23,0x23,0x24,0x25,0x26}
+--	{0x11,0x11,0x11,0x11,0x12,0x12,0x12,0x12,0x13,0x13,0x13,0x13,0x14,0x14,0x14,0x14,0x15}, 
+	{0x11,0x12,0x14,0x13,0x14}
+--	{0x12,0x13,0x14,0x23,0x23,0x24,0x25,0x26}
 }
 
 
