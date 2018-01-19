@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<Project Name="myFirstluaApplication.luaprj" Cmd="" Arg="" Dir="" Toggle="false" >
+    <LuaFile RelativePath=".\main.lua" />
+    <LuaFile RelativePath=".\funs.lua" />
+    <LuaFile RelativePath=".\device.lua" />
+    <LuaFile RelativePath=".\test.lua" />
+</Project>
